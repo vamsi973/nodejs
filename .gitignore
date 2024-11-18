@@ -23,7 +23,7 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
-/sample-project/node_modules
+node_modules/*
 # Windows shortcuts
 *.lnk
 sample.txt
