@@ -1,0 +1,56 @@
+REPL -< read eval print loop
+
+=> The REPL (Read-Eval-Print Loop) is an interactive environment that allows you to execute code line by line and immediately see the results. In Node.js, the REPL provides an interactive shell where you can run JavaScript code, test snippets, and explore the behavior of the Node.js runtime.
+=> To start REPL we should enter command node in cmd prompt.
+=> we can perform basic operations (Arthamatic ,Variables, Object ,functions) in repl
+=> REPL Also support multi line inputs
+=> In REPL we have special commands to work more efficiently
+        -> .help shows the help available for REPL
+        -->.break   -- Used to break out of a multi-line expression if you decide you no longer want to finish it.
+        -->.clear   -- clears all variables and functions from the REPL’s context, effectively resetting it.
+        -->.exit    -- exit the repl
+        -->.save    -- saves the current context to a file -->.save mysession.js
+        -->.load    -- load a file into repl --> .load myfile.js
+        -->.editor -- start editor for multi-line input
+=> Variables and functions defined in the REPL are persistent until the REPL session is closed. 
+   You can define variables and functions, and then refer to them in later expressions.
+=> You can also run asynchronous code in the REPL, including setTimeout(), 
+   Promises, or even asynchronous functions (using async/await).
+=> You can interactively explore objects, arrays, and functions using the REPL. When you return a complex object (e.g., an array or a custom object), the REPL tries to format and print it in a readable way.
+    --If you want to inspect more deeply, you can use console.log() or util.inspect() to print the object with more details (e.g., handling circular references or deep inspection).
+        --example > console.log(util.inspect(obj, { showHidden: false, depth: null }));
+
+
+Use Cases for Node.js REPL
+    Experimentation: 
+        Try out small code snippets or experiment with JavaScript features interactively. 
+        You can see the immediate results of your code and test logic without needing to write a full script or restart a server.
+    Learning and Debugging: 
+        If you're learning JavaScript or troubleshooting a problem in your code, the REPL allows you to quickly test functions, variables, and APIs in isolation. It's great for trial and error.
+    Testing APIs: 
+        You can use the REPL to test Node.js APIs (e.g., fs, http, crypto, etc.) in an interactive way.
+    Quick Scripting: 
+        Need to execute a quick one-liner or script? The REPL is a fast way to execute simple scripts without creating a full Node.js file.
+    Data Exploration: 
+        You can interactively work with data structures, inspect values, and debug complex code without needing a full-fledged IDE.
+
+Advanced Usage with Custom REPL Commands
+    You can also extend the REPL to define your own custom commands by using the Node.js repl module. Here’s an example of creating your own custom command:
+
+
+    const repl = require('repl');
+
+    const server = repl.start({
+    prompt: 'myrepl> ',
+    eval: (cmd, context, filename, callback) => {
+        if (cmd.trim() === 'hello') {
+        callback(null, 'Hello, custom REPL!');
+        } else {
+        callback(null, eval(cmd)); // Default behavior (evaluate as JavaScript)
+        }
+    }
+    });
+
+
+
+

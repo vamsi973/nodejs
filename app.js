@@ -18,9 +18,7 @@ rl.on("close", () => {
     // process.exit(0)
 })
 
-// function trigger(){
 
-// }
 rl.on('history', (history) => {
     console.log(`Received: ${history}`);
 }); 

@@ -1,0 +1,110 @@
+What is node js?
+
+
+v8 javascript engine
+
+    At the core of Node.js is the V8 JavaScript engine (developed by Google for Chrome), 
+    which compiles JavaScript into machine code for fast execution. 
+    V8 is optimized for performance and is one of the key reasons behind Node.js's efficiency when handling I/O-intensive tasks.
+
+evenet driven,Non blocking I/O models
+    This makes Node.js well-suited for handling large numbers of concurrent connections, such as for web servers or APIs.
+        ---Non-blocking means that Node.js does not wait for I/O operations (like reading from disk, making HTTP requests, or accessing a database) to complete before moving on to the next task.
+        ---Event-driven means Node.js uses an event loop to manage and handle asynchronous operations, 
+           responding to events (such as user input or a completed network request) and triggering callbacks or promises.
+Event Loop 
+    The event loop is the heart of Node.js's asynchronous programming model. 
+    It is responsible for executing all JavaScript code, collecting and processing events, and executing queued sub-tasks.
+        --Node.js operates in a single thread and runs code asynchronously, 
+        which means that instead of blocking the thread while waiting for I/O operations, it can continue running other tasks.
+        --When an I/O operation is needed, Node.js offloads it to the system kernel or a background thread (using libuv, a library that provides asynchronous I/O). Once the I/O operation completes,
+        the event loop picks up the callback associated with that task and executes it.
+    The event loop has multiple phases, each with specific tasks:
+        --Timers: Executes callbacks scheduled with setTimeout() and setInterval().
+        --I/O callbacks: Executes almost all callbacks, excluding the ones that are part of timers or close events.
+        --Idle, prepare: Internal housekeeping.
+        --Poll: Retrieves new I/O events; executes I/O-related callbacks.
+        --Check: Executes callbacks scheduled with setImmediate().
+        --Close callbacks: Executes close events like socket.on('close').
+libuv: Low-Level I/O Handling
+    Node.js uses the libuv library to handle non-blocking I/O operations. Libuv provides an abstraction layer over the system’s I/O, 
+    enabling Node.js to handle operations like file system access, network requests, and timers asynchronously and efficiently.
+        --It includes a thread pool for tasks that require blocking operations (like file system access), allowing Node.js to offload these tasks while the main event loop keeps running.
+Modules in Node.js
+    Node.js uses a modular architecture that allows you to break down functionality into separate files and then import them into other parts of your application. This is achieved using the CommonJS
+        --require() is used to import modules.
+        --module.exports or exports are used to expose functionality from a module.
+    There are built-in modules, such as fs (file system), http (for creating HTTP servers), 
+    and path (for working with file and directory paths), as well as third-party modules that can be installed via npm (Node Package Manager).
+Asynchronous Programming
+    Node.js is designed around asynchronous programming, and you’ll often see callbacks, promises, and async/await used to manage asynchronous code:
+        --Callbacks: Functions passed into other functions that are executed when the task is complete.
+        --Promises: Objects that represent the eventual completion (or failure) of an asynchronous operation and its resulting value.
+        --Async/Await: Syntactic sugar over promises, allowing asynchronous code to be written in a more synchronous style.
+Node.js APIs and Libraries
+    Node.js provides an extensive set of built-in modules that allow you to interact with the file system, work with HTTP requests, interact with databases, handle streams, and more. Some of the most commonly used modules include:
+
+        --fs: Interacts with the file system (e.g., read/write files).
+        --http: Used to create web servers and make HTTP requests.
+        --stream: Works with streams (used for reading or writing data in chunks).
+        --path: Utility for working with file and directory paths.
+        --os: Provides information about the operating system.
+        --url: Utilities for working with urls.
+        --events: Allows to evenet driven programming
+Node.js Process and Event Loop Interaction
+    Node.js runs on a single thread by default, which means that it executes one task at a time. However,
+     the event loop allows Node.js to handle asynchronous tasks (like I/O) without blocking the main thread. Here's a simplified flow of how it works:
+
+        --The process starts executing code synchronously.
+        --Asynchronous tasks are offloaded (e.g., I/O, database requests).
+        --The event loop checks if any asynchronous task is complete and triggers its callback.
+        --The process continues handling new incoming requests or tasks asynchronously.
+Global Objects in Node.js   
+    There are several global objects available in Node.js, meaning you don’t have to require them explicitly:
+        process: Provides information about the current process (e.g., environment variables, arguments passed to the process).
+        --__dirname: The directory name of the current module.
+        --__filename: The full path to the current module.
+        --console: Used for logging information to the console.
+        --setTimeout and setInterval: Used for scheduling code to run after a certain delay or repeatedly at intervals.
+Error Handling in Node.js
+    Node.js follows the standard JavaScript error-handling model, which uses try-catch blocks for synchronous code. However, for asynchronous code (especially callbacks), 
+    it’s common to pass errors as the first argument to the callback function.
+    For promises, you handle errors using .catch() or with async/await and try-catch.
+Concurrency vs Parallelism
+    Although Node.js operates on a single thread, it can achieve concurrency by handling many I/O tasks at the same time. However, true parallelism (like running multiple threads) can be achieved through techniques like:
+        --Using worker threads.
+        --Using external tools like cluster to fork multiple processes.
+    Node.js can also offload computationally intensive tasks to child processes or worker threads, allowing you to scale your app across multiple cores of a machine.
+
+
+
+Worker Threads and Clustering
+
+    Though Node.js is single-threaded, it allows you to use worker threads and clustering to scale applications across multiple CPU cores.
+        --Worker Threads: Introduced in Node.js v10, worker threads allow you to run JavaScript in parallel in separate threads.
+        --Clustering: This module allows you to spawn multiple child processes (each with its own event loop) to handle different requests, 
+            enabling you to take advantage of multi-core systems.
+
+Node.js Process Object
+    Node.js exposes a global process object that provides information about the current process.
+    You can use it to access environment variables, command-line arguments, and the current working directory.
+
+
+
+
+Node.js is an event-driven, non-blocking runtime built on V8, making it ideal for building scalable network applications.
+The event loop manages asynchronous operations, enabling non-blocking behavior, and uses libuv to interact with the OS.
+Node.js applications are highly modular and use the CommonJS module system.
+Asynchronous programming with callbacks, promises, and async/await is a core part of Node.js development.
+Streams, file system handling, HTTP servers, and other modules are readily available, making Node.js an excellent tool for server-side programming.
+
+    
+
+
+
+
+
+
+
+
+

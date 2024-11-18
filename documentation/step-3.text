@@ -1,0 +1,25 @@
+=>NPM Basic Commands
+    npm init         => command is used to create a new package.json file, which contains metadata about the project, including its dependencies, scripts, version, and more
+    npm inti -y      => command initializes the project automatically with default values. It's a quick way to create a package.json without any prompts.
+    npm install <package-name>  ==>Installs a package and its dependencies.
+    npm install <package-name> --save  => (Deprecated in npm v5 and later): This used to be the command for saving the installed package as a dependency in package.json, but now this is done automatically by default in npm v5 and later.
+    npm install <package-name> --save-dev => Installs a package as a development dependency (i.e., it's only needed for development purposes and not for production).
+    npm install      =>If you have a package.json file with listed dependencies, you can install them all at once using:
+    npm uninstall <package-name> => to remove installed package 
+    npm uninstall <package-name> --save-dev => Removes the package from the devDependencies section of package.json.
+    npm list         => we can view all installed package for the current project
+    npm list --global
+    npm list --depth=0 => This limits the depth of the tree to show only the top-level packages (useful for quickly seeing your main dependencies).
+    npm update <package-name> => Updates the specified package to the latest version that satisfies the version range defined in package.json.
+    npm update          => This will update all outdated packages in your project to the latest version according to the version ranges defined in your package.json.
+    npm audit           => shows the vulnerabilities in our dependencies
+    npm audit fix       => Automatically tries to fix any vulnerabilities by upgrading or modifying dependencies.
+    npm run             => Lists all the available scripts defined in the package.json file.
+    npm start           =>If a script named start is defined in your package.json, npm start is a shortcut for npm run start.
+    npm install -g <package-name>
+    npm cache clean --force
+    npm help            => Displays help information about npm commands.
+    npm config list     =>  Lists all npm configuration options.
+    npm publish	
+    npm login
+    npm version <version> =>You can bump the version of your package. This will update the version in package.json and create a Git commit and tag.(major--minor)

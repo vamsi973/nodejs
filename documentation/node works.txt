@@ -1,0 +1,13 @@
+pick a function in a standarad node library
+
+find where its implementation in the node source code
+
+see how v8 and libuv are used to implement that function
+
+
+pbkdf2 function => password + salt + otherOptions =>  Hash 
+
+
+
+
+jscode -> lib folder  -> process.binding() -> v8 -> src folder (c++ code) -> libuv
